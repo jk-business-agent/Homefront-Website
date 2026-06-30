@@ -19,8 +19,7 @@ export type SiteSettings = {
 };
 
 export async function getSettings(): Promise<SiteSettings> {
-  let s = await prisma.siteSettings.findFirst();
-  if (!s) s = await prisma.siteSettings.create({ data: { id: "main" } });
+  const s = await prisma.siteSettings.upsert({ where: { id: "main" }, create: { id: "main" }, update: {} });
   return {
     announcement: s.announcement,
     announcementEnabled: s.announcementEnabled,
