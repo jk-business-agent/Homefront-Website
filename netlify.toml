@@ -1,0 +1,10 @@
+# Netlify build configuration for Home Front Markets.
+# Netlify auto-detects Next.js and applies its Next.js runtime.
+[build]
+  # Generate the database client and build the site.
+  command = "npx prisma generate && npm run build"
+  publish = ".next"
+
+[build.environment]
+  # Prisma needs this on Netlify's build image.
+  PRISMA_CLI_BINARY_TARGETS = "native"
