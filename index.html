@@ -24,7 +24,8 @@
   header{position:sticky;top:0;z-index:40;background:var(--navy);color:#fff;box-shadow:var(--shadow)}
   .header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:20px;padding:14px 20px}
   .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:21px;letter-spacing:-.3px;white-space:nowrap;cursor:pointer}
-  .logo .mark{width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,var(--red),var(--red-dark));display:flex;align-items:center;justify-content:center;font-size:18px}
+  .logo .mark{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .logo .mark img{width:100%;height:100%;object-fit:contain}
   .logo span.hf{color:#fff}
   .logo span.mk{color:var(--gold)}
   .search{flex:1;display:flex;max-width:640px}
@@ -165,7 +166,7 @@
 <header>
   <div class="header-inner">
     <div class="logo" onclick="goHome()">
-      <div class="mark">🏛️</div>
+      <div class="mark"><img src="public/hfm-newsletter-logo-1.png" alt="Homefront Markets"></div>
       <div><span class="hf">Home Front</span> <span class="mk">Markets</span></div>
     </div>
     <div class="search">
@@ -234,7 +235,7 @@
 <footer>
   <div class="foot-inner">
     <div>
-      <div class="logo" style="margin-bottom:12px"><div class="mark">🏛️</div><div><span class="hf" style="color:#fff">Home Front</span> <span class="mk">Markets</span></div></div>
+      <div class="logo" style="margin-bottom:12px"><div class="mark"><img src="public/hfm-newsletter-logo-1.png" alt="Homefront Markets"></div><div><span class="hf" style="color:#fff">Home Front</span> <span class="mk">Markets</span></div></div>
       <p style="font-size:14px;max-width:300px">The marketplace for American-made goods. Built to keep U.S. makers thriving and dollars on the home front.</p>
     </div>
     <div><h5>Shop</h5><ul><li onclick="setCategory('All')">All products</li><li onclick="setCategory('Kitchen')">Kitchen</li><li onclick="setCategory('Apparel')">Apparel</li><li onclick="setCategory('Tools')">Tools</li></ul></div>
