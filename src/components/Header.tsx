@@ -70,7 +70,7 @@ export default function Header({ announcement, announcementLink }: { announcemen
           <Link href="/" className="logo">
             {logoOk ? (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src="/hfm-newsletter-logo-1.png" alt="Homefront Markets" onError={() => setLogoOk(false)} />
+              <img src="/Main_Logo_With_Background.png" alt="Homefront Markets" onError={() => setLogoOk(false)} />
             ) : (
               <span className="wordmark">
                 <span className="hf">HOMEFRONT</span>
