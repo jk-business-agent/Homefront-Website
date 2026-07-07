@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
 import { useAuth } from "@/lib/auth-context";
-import { CATEGORIES_WITH_ALL } from "@/lib/categories";
 import Flag from "./Flag";
 
 export default function Header({ announcement, announcementLink }: { announcement?: string; announcementLink?: string | null }) {
@@ -13,15 +12,11 @@ export default function Header({ announcement, announcementLink }: { announcemen
   const { user, logout } = useAuth();
   const [q, setQ] = useState("");
   const [logoOk, setLogoOk] = useState(true);
-  const [cats, setCats] = useState<string[]>(CATEGORIES_WITH_ALL);
   const [navPages, setNavPages] = useState<{ key: string; label: string }[]>([]);
   const [suggests, setSuggests] = useState<{ type: string; label: string; slug?: string; emoji?: string }[]>([]);
   const [showS, setShowS] = useState(false);
 
   useEffect(() => {
-    fetch("/api/categories").then((r) => r.json()).then((d) => {
-      if (d.categories?.length) setCats(["All", ...d.categories.map((c: any) => c.name)]);
-    }).catch(() => {});
     fetch("/api/pages/nav").then((r) => r.json()).then((d) => {
       if (d.pages?.length) setNavPages(d.pages);
     }).catch(() => {});
@@ -131,11 +126,9 @@ export default function Header({ announcement, announcementLink }: { announcemen
         </div>
         <nav className="navrow">
           <div className="navrow-inner">
-            {cats.map((c) => (
-              <Link key={c} href={c === "All" ? "/" : `/?category=${encodeURIComponent(c)}`}>
-                {c === "All" ? <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}><Flag size={13} /> All Departments</span> : c}
-              </Link>
-            ))}
+            <Link href="/">
+              <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}><Flag size={13} /> Market</span>
+            </Link>
             <Link href="/vendors">Vendors</Link>
             <Link href="/about">About</Link>
             {navPages.map((p) => (
